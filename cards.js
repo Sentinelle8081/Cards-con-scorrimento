@@ -39,9 +39,9 @@ let intervalId;
 const scrollingList = document.getElementById("scrollingList");
 
 function startScroll() {
-  let speed = window.innerWidth < 768 ? 12 : 20; // velocità più alta su dispositivi più piccoli
+  let speed = window.innerWidth < 768 ? 6 : 10; // velocità più alta su dispositivi più piccoli
   intervalId = setInterval(() => {
-    scrollingList.scrollLeft += 100;
+    scrollingList.scrollLeft += 500;
   }, speed);
 }
 
