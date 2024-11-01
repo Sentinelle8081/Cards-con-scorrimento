@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista a scorrimento di card</title>
+    <link rel="stylesheet" href="stile.css" />
+  </head>
+  <body>
+    <section class="scrolling-list-container">
+      <h2>Immagini in evidenza</h2>
+      <!-- Pulsanti per filtrare immagini ------------------------------------------->
+      <div class="filter-controls">
+        <button onclick="filterCards('all')">Tutti</button>
+        <button onclick="filterCards('natura')">Natura</button>
+        <button onclick="filterCards('animali')">Animali</button>
+      </div>
+      <!-- cards -------------------------------------------------------------------->
+      <div class="scrolling-list" id="scrollingList">
+        <!-- card 1 -->
+        <div class="card" data-category="animali">
+          <img
+            src="img/natalya-letunova-QPIDxCzILa4-unsplash.jpg"
+            alt="
+        foto di un animale"
+          />
+          <button class="toggle-btn" onclick="toggleDetails(this)">
+            Mostra dettagli
+          </button>
+          <div class="details">
+            <p>Fotografo: Natalya Letunova</p>
+          </div>
+        </div>
+
+        <!-- card 2 -->
+        <div class="card" data-category="natura">
+          <img
+            src="img/graham-holtshausen-natura-unsplash.jpg"
+            alt="
+        foto della natura"
+          />
+          <button class="toggle-btn" onclick="toggleDetails(this)">
+            Mostra dettagli
+          </button>
+          <div class="details">
+            <p>Fotografo: Graham Holtshausen on unsplash.com</p>
+          </div>
+        </div>
+
+        <!-- card 3 -->
+        <div class="card" data-category="animali">
+          <img src="img/anna-blake-unsplash.jpg" alt="foto di animale" />
+          <button class="toggle-btn" onclick="toggleDetails(this)">
+            Mostra dettagli
+          </button>
+          <div class="details">
+            <p>Fotografo: Anna Blake on unsplash.com</p>
+          </div>
+        </div>
+
+        <!-- card 4 -->
+        <div class="card" data-category="animali">
+          <img src="img/sami-chau-unsplash.jpg" alt="foto di animale" />
+
+          <button class="toggle-btn" onclick="toggleDetails(this)">
+            Mostra dettagli
+          </button>
+          <div class="details">
+            <p>Fotografo: Sami Chau on unsplash.com</p>
+          </div>
+        </div>
+
+        <!-- card 5 -->
+        <div class="card" data-category="natura">
+          <img
+            src="img/zach-lezniewicz-natura-unsplash.jpg"
+            alt="foto della natura"
+          />
+
+          <button class="toggle-btn" onclick="toggleDetails(this)">
+            Mostra dettagli
+          </button>
+          <div class="details">
+            <p>Fotografo: Zach Lezniewicz on unsplash.com</p>
+          </div>
+        </div>
+        <!-- card 6 -->
+        <div class="card" data-category="animali">
+          <img src="img/will-hulbert-unsplash.jpg" alt="foto di animale" />
+
+          <button class="toggle-btn" onclick="toggleDetails(this)">
+            Mostra dettagli
+          </button>
+          <div class="details">
+            <p>Fotografo: Will Hulbert</p>
+          </div>
+        </div>
+
+        <!-- card 7 -->
+        <div class="card" data-category="natura">
+          <img
+            src="img/eric-muhr-f1-natura-unsplash.jpg"
+            alt="foto della natura"
+          />
+          <button class="toggle-btn" onclick="toggleDetails(this)">
+            Mostra dettagli
+          </button>
+          <div class="details">
+            <p>Fotografo: Eric Muhr on unsplash.com</p>
+          </div>
+        </div>
+
+        <!-- card 8 -->
+        <div class="card" data-category="animali">
+          <img src="img/jen-dries-unsplash.jpg" alt="foto di animale" />
+
+          <button class="toggle-btn" onclick="toggleDetails(this)">
+            Mostra dettagli
+          </button>
+          <div class="details">
+            <p>Fotografo: Jen Dries on unsplash.com</p>
+          </div>
+        </div>
+        <!-- card 9 -->
+        <div class="card" data-category="animali">
+          <img src="img/dibakar-roy-unsplash.jpg" alt="foto di animale" />
+
+          <button class="toggle-btn" onclick="toggleDetails(this)">
+            Mostra dettagli
+          </button>
+          <div class="details">
+            <p>Fotografo: Dibakar Roy on unsplash.com</p>
+          </div>
+        </div>
+
+        <!-- card 10 -->
+        <div class="card" data-category="animali">
+          <img
+            src="img/zach-lezniewicz-MU8C5LpkiJ0-unsplash.jpg"
+            alt="foto di animale"
+          />
+          <button class="toggle-btn" onclick="toggleDetails(this)">
+            Mostra dettagli
+          </button>
+          <div class="details">
+            <p>Fotografo: Zach Lezniewicz on unsplash</p>
+          </div>
+        </div>
+      </div>
+      <!-- Controlli -->
+      <div class="controls">
+        <button onclick="startScroll()">Avvia</button>
+        <button onclick="stopScroll()">Ferma</button>
+        <button onclick="resetScroll()">Ripristina</button>
+      </div>
+    </section>
+    <script src="cards.js"></script>
+  </body>
+</html>
