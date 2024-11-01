@@ -38,6 +38,7 @@ function filterCards(category) {
 let intervalId;
 let autoScrollEnabled = false; // variabile per monitorare la modalità di scorrimento
 const scrollingList = document.getElementById("scrollingList");
+const cardWidth = 350; // larghezza di ogni card
 
 function startScroll() {
   stopScroll(); // Assicura di fermare il movimento precedente
@@ -45,6 +46,13 @@ function startScroll() {
   intervalId = setInterval(() => {
     scrollingList.scrollLeft += 900;
   }, speed);
+}
+
+// Allinea alla carta più vicina ------------------------------------------------------
+function alignToNearestcard() {
+  const currentPosition = scrollingList.scrollLeft;
+  const nearestcard = Math.round(currentPosition / currentWidth) * cardWidth;
+  scrollingList.scrollLeft = nearestcard;
 }
 
 // funzione per alternare tra scorrimento manuale e automatico -------------------------
