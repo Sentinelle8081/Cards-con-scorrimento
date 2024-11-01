@@ -29,6 +29,7 @@
   display: flex; /* aggiunto */
   gap: 10px;
   overflow-x: auto; /* abilita lo scorrimento orizzontale */
+  -webkit-overflow-scrolling: touch; /* Aggiunge lo scorrimento fluido su iOS */
   scroll-behavior: smooth;
   height: 450px;
 }
