@@ -1,7 +1,7 @@
 // Effetto caricamento progressivo -----------------------------------
 const images = document.querySelectorAll(".card img"); // seleziona tutte le immagini (<img>) contenute nelle cards, ossia negli elementi con classe .card.
 // restituisce una lista di tutte le immagini trovate e la memorizza nella variabile images.
-const loadImages = () =>
+const loadImages = () => {
   // Qui viene dichiarata una funzione chiamata loadImages che sarà usata per verificare se le immagini sono visibili sullo schermo.
   images.forEach((img) => {
     // Ad ogni ciclo, l’immagine corrente è chiamata img e il codice all’interno delle parentesi graffe verrà eseguito su quella immagine.
@@ -17,6 +17,7 @@ const loadImages = () =>
       // Questo fa sì che l’immagine possa mostrarsi gradualmente grazie alla transizione impostata nel CSS per .visible.
     }
   });
+};
 // Queste due righe assicurano che loadImages venga chiamata sia quando la pagina si carica ('load') sia ogni volta che l’utente scorre la pagina ('scroll').
 //In questo modo, le immagini vengono controllate continuamente per vedere se devono apparire.
 window.addEventListener("scroll", loadImages);
@@ -91,28 +92,11 @@ const enableSwipeScrolling = () => {
 
 // Funzione per inizializzare il comportamento di scorrimento ------------------------------------------------------
 const initScrollBehavior = () => {
-  if (isMobileDevice) {
+  if (isMobileDevice()) {
     enableSwipeScrolling(); // Abilita scorrimento su swipe per dispositivi mobili
   } else {
     startScroll(); // Abilita scorrimento automatico per desktop
   }
-};
-
-// Scorrimento automatico solo per desktop ------------------------------------------------------------------
-const startScroll = () => {
-  stopScroll();
-  intervalId = setInterval(() => {
-    scrollingList.scrollLeft += 2;
-  }, 20);
-};
-
-const stopScroll = () => {
-  clearInterval(intervalId);
-};
-
-const resetScroll = () => {
-  scrollingList.scrollLeft = 0;
-  stopScroll();
 };
 
 // Allinea alla carta più vicina ------------------------------------------------------
