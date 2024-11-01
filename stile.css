@@ -2,7 +2,11 @@
   .controls {
     display: none; /* Nasconde i pulsanti su dispositivi mobili */
   }
+  .filter-controls {
+    display: block;
+  }
 }
+
 .filter-controls {
   margin-bottom: 20px;
   text-align: center;

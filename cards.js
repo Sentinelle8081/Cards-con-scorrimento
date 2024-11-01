@@ -47,25 +47,13 @@ function startScroll() {
   }, 20);
 }
 
-// funzione per alternare tra scorrimento manuale e automatico -------------------------
-function toggleScrollMode() {
-  const button = document.querySelector(".controls button");
-  autoScrollEnabled = !autoScrollEnabled;
-  if (autoScrollEnabled) {
-    button.textContent = "Attiva scorrimento manuale";
-  } else {
-    stopScroll();
-    button.textContent = "Attiva scorrimento automatico";
-  }
-}
-function stopScroll() {
-  clearInterval(intervalId);
-}
-
-function resetScroll() {
-  scrollingList.scrollLeft = 0;
-  stopScroll();
-}
+// assicurare che i clic sui pulsanti di filtro vengano registrati correttamente anche sui dispositivi mobili.
+document.querySelectorAll(".filter-controls button").forEach((button) => {
+  button.addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    button.click();
+  });
+});
 
 // funzione per rilevare se il device è mobile --------------------------------------------------------------------
 const isMobileDevice = () => {
