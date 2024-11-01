@@ -66,6 +66,11 @@ function resetScroll() {
   stopScroll();
 }
 
+// funzione per rilevare se il device è mobile --------------------------------------------------------------------
+const isMobileDevice = () => {
+  return window.matchMedia("(max-width: 768px)").matches; // Considera dispositivi fino a 768px come mobile
+};
+
 // Funzione per abilitare lo scorrimento con swipe --------------------------------------------------
 const enableSwipeScrolling = () => {
   let startX;
@@ -84,15 +89,6 @@ const enableSwipeScrolling = () => {
   });
 };
 
-// Inizializza il comportamento di scorrimento quando la pagina viene caricata
-window.addEventListener("load", initScrollBehavior);
-window.addEventListener("resize", initScrollBehavior); // Ri-inizializza se la finestra viene ridimensionata
-
-// funzione per rilevare se il device è mobile --------------------------------------------------------------------
-const isMobileDevice = () => {
-  return window.matchMedia("(max-width: 768px)").matches; // Considera dispositivi fino a 768px come mobile
-};
-
 // Funzione per inizializzare il comportamento di scorrimento ------------------------------------------------------
 const initScrollBehavior = () => {
   if (isMobileDevice) {
@@ -102,13 +98,31 @@ const initScrollBehavior = () => {
   }
 };
 
+// Scorrimento automatico solo per desktop ------------------------------------------------------------------
+const startScroll = () => {
+  stopScroll();
+  intervalId = setInterval(() => {
+    scrollingList.scrollLeft += 2;
+  }, 20);
+};
+
+const stopScroll = () => {
+  clearInterval(intervalId);
+};
+
+const resetScroll = () => {
+  scrollingList.scrollLeft = 0;
+  stopScroll();
+};
+
 // Allinea alla carta più vicina ------------------------------------------------------
 function alignToNearestcard() {
   const currentPosition = scrollingList.scrollLeft;
   const nearestcard = Math.round(currentPosition / currentWidth) * cardWidth;
   scrollingList.scrollLeft = nearestcard;
 }
-// Espansione cards -------------------------------------------------
+
+// Espansione cards -------------------------------------------------------------------
 function toggleDetails(button) {
   const card = button.closest(".card");
   card.classList.toggle("expanded");
@@ -119,3 +133,7 @@ function toggleDetails(button) {
     button.textContent = "Mostra dettagli";
   }
 }
+
+// Inizializza il comportamento di scorrimento quando la pagina viene caricata ----------------------------------
+window.addEventListener("load", initScrollBehavior);
+window.addEventListener("resize", initScrollBehavior); // Ri-inizializza se la finestra viene ridimensionata
