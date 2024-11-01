@@ -47,11 +47,18 @@ function startScroll() {
   }, 20);
 }
 
-// assicurare che i clic sui pulsanti di filtro vengano registrati correttamente anche sui dispositivi mobili.
+// MOBILE filtro --> assicurare che i clic sui pulsanti di filtro vengano registrati correttamente sui dispositivi mobili.
 document.querySelectorAll(".filter-controls button").forEach((button) => {
   button.addEventListener("touchstart", (e) => {
     e.preventDefault();
     button.click();
+  });
+});
+
+// DESKTOP filtro --> assicurare che i clic sui pulsanti di filtro vengano registrati correttamente sui dispositivi mobili.
+document.querySelectorAll(".filter-controls button").forEach((button) => {
+  button.addEventListener("click", (e) => {
+    filterCards(button.getAttribute("data-category"));
   });
 });
 
