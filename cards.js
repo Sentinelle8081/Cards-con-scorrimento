@@ -66,20 +66,6 @@ function resetScroll() {
   stopScroll();
 }
 
-// funzione per rilevare se il device è mobile --------------------------------------------------------------------
-const isMobileDevice = () => {
-  return window.matchMedia("(max-width: 768px)").matches; // Considera dispositivi fino a 768px come mobile
-};
-
-// Funzione per inizializzare il comportamento di scorrimento ------------------------------------------------------
-const initScrollBehavior = () => {
-  if (isMobileDevice) {
-    enableSwipeScrolling(); // Abilita scorrimento su swipe per dispositivi mobili
-  } else {
-    startScroll(); // Abilita scorrimento automatico per desktop
-  }
-};
-
 // Funzione per abilitare lo scorrimento con swipe --------------------------------------------------
 const enableSwipeScrolling = () => {
   let startX;
@@ -101,6 +87,20 @@ const enableSwipeScrolling = () => {
 // Inizializza il comportamento di scorrimento quando la pagina viene caricata
 window.addEventListener("load", initScrollBehavior);
 window.addEventListener("resize", initScrollBehavior); // Ri-inizializza se la finestra viene ridimensionata
+
+// funzione per rilevare se il device è mobile --------------------------------------------------------------------
+const isMobileDevice = () => {
+  return window.matchMedia("(max-width: 768px)").matches; // Considera dispositivi fino a 768px come mobile
+};
+
+// Funzione per inizializzare il comportamento di scorrimento ------------------------------------------------------
+const initScrollBehavior = () => {
+  if (isMobileDevice) {
+    enableSwipeScrolling(); // Abilita scorrimento su swipe per dispositivi mobili
+  } else {
+    startScroll(); // Abilita scorrimento automatico per desktop
+  }
+};
 
 // Allinea alla carta più vicina ------------------------------------------------------
 function alignToNearestcard() {
