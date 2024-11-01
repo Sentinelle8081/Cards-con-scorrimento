@@ -49,9 +49,12 @@ function startScroll() {
 
 // MOBILE filtro --> assicurare che i clic sui pulsanti di filtro vengano registrati correttamente sui dispositivi mobili.
 document.querySelectorAll(".filter-controls button").forEach((button) => {
+  button.addEventListener("click", (e) => {
+    filterCards(button.getAttribute("data-category"));
+  });
   button.addEventListener("touchstart", (e) => {
     e.preventDefault();
-    button.click();
+    filterCards(button.getAttribute("data-category"));
   });
 });
 
