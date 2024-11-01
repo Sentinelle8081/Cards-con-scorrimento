@@ -1,3 +1,14 @@
+// Effetto caricamento progressivo -----------------------------------
+
+const images = document.querySelectorAll(".card img"); // Memorizza tutti gli elementi <img> che sono all'interno di un elemento con la classe
+const loadImage = () => {
+  images.forEach((img) => {
+    const rect = img.getBoundingClientRect();
+    if (rect.top < window.innerHeight) {
+      images.classList.add("visible");
+    }
+  });
+};
 // Funzioni per filtrare le carte ------------------------------------
 function filterCards(category) {
   const cards = document.querySelectorAll(".card");
