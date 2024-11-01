@@ -34,17 +34,30 @@ function filterCards(category) {
   });
 }
 
-// Controllo scorrimento ---------------------------------------------
+// Controllo scorrimento -------------------------------------------------------------
 let intervalId;
+let autoScrollEnabled = false; // variabile per monitorare la modalità di scorrimento
 const scrollingList = document.getElementById("scrollingList");
 
 function startScroll() {
+  stopScroll(); // Assicura di fermare il movimento precedente
   let speed = window.innerWidth < 768 ? 4 : 8; // velocità più alta su dispositivi più piccoli
   intervalId = setInterval(() => {
     scrollingList.scrollLeft += 900;
   }, speed);
 }
 
+// funzione per alternare tra scorrimento manuale e automatico -------------------------
+function toggleScrollMode() {
+  const button = document.querySelector(".controls button");
+  autoScrollEnabled = !autoScrollEnabled;
+  if (autoScrollEnabled) {
+    button.textContent = "Attiva scorrimento manuale";
+  } else {
+    stopScroll();
+    button.textContent = "Attiva scorrimento automatico";
+  }
+}
 function stopScroll() {
   clearInterval(intervalId);
 }
