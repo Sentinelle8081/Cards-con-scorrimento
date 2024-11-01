@@ -1,7 +1,7 @@
 // Effetto caricamento progressivo -----------------------------------
 
 const images = document.querySelectorAll(".card img"); // Memorizza tutti gli elementi <img> che sono all'interno di un elemento con la classe
-const loadImage = () => {
+const loadImages = () => {
   images.forEach((img) => {
     const rect = img.getBoundingClientRect();
     if (rect.top < window.innerHeight) {
@@ -20,6 +20,9 @@ function filterCards(category) {
     }
   });
 }
+
+window.addEventListener("scroll", loadImages);
+window.addEventListener("load", loadImages);
 
 // Controllo scorrimento ---------------------------------------------
 let intervalId;
