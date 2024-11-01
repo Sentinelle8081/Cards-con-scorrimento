@@ -55,13 +55,6 @@ document.querySelectorAll(".filter-controls button").forEach((button) => {
   });
 });
 
-// DESKTOP filtro --> assicurare che i clic sui pulsanti di filtro vengano registrati correttamente sui dispositivi mobili.
-document.querySelectorAll(".filter-controls button").forEach((button) => {
-  button.addEventListener("click", (e) => {
-    filterCards(button.getAttribute("data-category"));
-  });
-});
-
 // funzione per rilevare se il device è mobile --------------------------------------------------------------------
 const isMobileDevice = () => {
   return window.matchMedia("(max-width: 768px)").matches; // Considera dispositivi fino a 768px come mobile
