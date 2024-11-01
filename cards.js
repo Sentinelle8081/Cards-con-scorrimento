@@ -36,23 +36,14 @@ function filterCards(category) {
 
 // Controllo scorrimento -------------------------------------------------------------
 let intervalId;
-let autoScrollEnabled = false; // variabile per monitorare la modalità di scorrimento
 const scrollingList = document.getElementById("scrollingList");
 const cardWidth = 350; // larghezza di ogni card
 
 function startScroll() {
   stopScroll(); // Assicura di fermare il movimento precedente
-  let speed = window.innerWidth < 768 ? 4 : 8; // velocità più alta su dispositivi più piccoli
   intervalId = setInterval(() => {
-    scrollingList.scrollLeft += 900;
-  }, speed);
-}
-
-// Allinea alla carta più vicina ------------------------------------------------------
-function alignToNearestcard() {
-  const currentPosition = scrollingList.scrollLeft;
-  const nearestcard = Math.round(currentPosition / currentWidth) * cardWidth;
-  scrollingList.scrollLeft = nearestcard;
+    scrollingList.scrollLeft += 2;
+  }, 20);
 }
 
 // funzione per alternare tra scorrimento manuale e automatico -------------------------
@@ -75,6 +66,48 @@ function resetScroll() {
   stopScroll();
 }
 
+// funzione per rilevare se il device è mobile --------------------------------------------------------------------
+const isMobileDevice = () => {
+  return window.matchMedia("(max-width: 768px)").matches; // Considera dispositivi fino a 768px come mobile
+};
+
+// Funzione per inizializzare il comportamento di scorrimento ------------------------------------------------------
+const initScrollBehavior = () => {
+  if (isMobileDevice) {
+    enableSwipeScrolling(); // Abilita scorrimento su swipe per dispositivi mobili
+  } else {
+    startScroll(); // Abilita scorrimento automatico per desktop
+  }
+};
+
+// Funzione per abilitare lo scorrimento con swipe --------------------------------------------------
+const enableSwipeScrolling = () => {
+  let startX;
+
+  scrollingList.addEventListener("touchstart", (e) => {
+    startX = e.touches[0].clientX;
+    stopScroll(); // Ferma lo scorrimento automatico se attivo
+  });
+
+  scrollingList.addEventListener("touchmove", (e) => {
+    const currentX = e.touches[0].clientX;
+    const diffX = startX - currentX;
+
+    scrollingList.scrollLeft += diffX; // Scorre la lista in base al movimento del finger
+    startX = currentX; // Aggiorna la posizione iniziale
+  });
+};
+
+// Inizializza il comportamento di scorrimento quando la pagina viene caricata
+window.addEventListener("load", initScrollBehavior);
+window.addEventListener("resize", initScrollBehavior); // Ri-inizializza se la finestra viene ridimensionata
+
+// Allinea alla carta più vicina ------------------------------------------------------
+function alignToNearestcard() {
+  const currentPosition = scrollingList.scrollLeft;
+  const nearestcard = Math.round(currentPosition / currentWidth) * cardWidth;
+  scrollingList.scrollLeft = nearestcard;
+}
 // Espansione cards -------------------------------------------------
 function toggleDetails(button) {
   const card = button.closest(".card");
