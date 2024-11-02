@@ -1,3 +1,9 @@
+import { filterCards } from "./filters.js";
+import { startScroll, stopScroll } from "./scroll.js";
+
+// Utilizzo delle funzioni importate
+startScroll();
+
 // Effetto caricamento progressivo -----------------------------------
 const images = document.querySelectorAll(".card img"); // seleziona tutte le immagini (<img>) contenute nelle cards, ossia negli elementi con classe .card.
 // restituisce una lista di tutte le immagini trovate e la memorizza nella variabile images.
@@ -22,30 +28,6 @@ const loadImages = () => {
 //In questo modo, le immagini vengono controllate continuamente per vedere se devono apparire.
 window.addEventListener("scroll", loadImages);
 window.addEventListener("load", loadImages);
-
-// Funzioni per filtrare le carte ------------------------------------
-function filterCards(category) {
-  const cards = document.querySelectorAll(".card");
-  cards.forEach((card) => {
-    if (category === "all" || card.dataset.category === category) {
-      card.style.display = "inline-block";
-    } else {
-      card.style.display = "none";
-    }
-  });
-}
-
-// Controllo scorrimento -------------------------------------------------------------
-let intervalId;
-const scrollingList = document.getElementById("scrollingList");
-const cardWidth = 350; // larghezza di ogni card
-
-function startScroll() {
-  stopScroll(); // Assicura di fermare il movimento precedente
-  intervalId = setInterval(() => {
-    scrollingList.scrollLeft += 2;
-  }, 20);
-}
 
 // MOBILE filtro --> assicurare che i clic sui pulsanti di filtro vengano registrati correttamente sui dispositivi mobili.
 document.querySelectorAll(".filter-controls button").forEach((button) => {
