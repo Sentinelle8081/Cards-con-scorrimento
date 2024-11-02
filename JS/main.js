@@ -1,9 +1,3 @@
-import { filterCards } from "./filters.js";
-import { startScroll, stopScroll } from "./scroll.js";
-
-// Utilizzo delle funzioni importate
-startScroll();
-
 // MOBILE filtro --> assicurare che i clic sui pulsanti di filtro vengano registrati correttamente sui dispositivi mobili.
 document.querySelectorAll(".filter-controls button").forEach((button) => {
   button.addEventListener("click", (e) => {
@@ -48,16 +42,6 @@ const initScrollBehavior = () => {
 };
 
 // Espansione cards -------------------------------------------------------------------
-function toggleDetails(button) {
-  const card = button.closest(".card");
-  card.classList.toggle("expanded");
-
-  if (card.classList.contains("expanded")) {
-    button.textContent = "Nascondi dettagli";
-  } else {
-    button.textContent = "Mostra dettagli";
-  }
-}
 
 // Inizializza il comportamento di scorrimento quando la pagina viene caricata ----------------------------------
 window.addEventListener("load", initScrollBehavior);
