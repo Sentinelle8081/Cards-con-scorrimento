@@ -1,0 +1,22 @@
+.filter-controls {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.filter-controls button {
+  background-color: blue;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.filter-controls button:hover {
+  background-color: #45a049;
+}
+
+.toggle-btn:hover {
+  background-color: #45a049;
+}

@@ -1,0 +1,48 @@
+.card {
+  display: inline-block; /* aggiunto */
+  position: relative;
+  width: 350px;
+  min-width: 300px; /*aggiunto*/
+  height: 400px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* aggiunto */
+  text-align: center;
+  background-color: #fff;
+  padding: 10px;
+  display: flex; /* per centrare il contenuto */
+  flex-direction: column; /* organizza gli elementi verticalmente */
+  justify-content: center; /*centra vertivalmente il contenuto */
+  align-items: center; /*centra orizzontalmente il contenuto */
+}
+
+.card:hover {
+  /* aggiunto */
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.card img {
+  width: 250px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.card.expanded .details {
+  display: block;
+  /*aggiunti*/
+  opacity: 1;
+  max-height: 80px; /* Limita l'altezza massima per un effetto di transizione */
+}
+
+.toggle-btn {
+  background-color: blue;
+  color: white;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  border-radius: 5px;
+  width: 50%;
+}

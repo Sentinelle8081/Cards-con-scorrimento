@@ -1,0 +1,23 @@
+.controls {
+  margin-top: 20px;
+  background-color: gainsboro;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+
+  border-radius: 5px;
+}
+
+.controls button {
+  background-color: blue;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline;
+}
+
+.controls button:hover {
+  background-color: lawngreen;
+  color: black;
+  transform: translateY(-1px);
+}
