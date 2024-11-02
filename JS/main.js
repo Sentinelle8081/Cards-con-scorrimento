@@ -47,13 +47,6 @@ const initScrollBehavior = () => {
   }
 };
 
-// Allinea alla carta più vicina ------------------------------------------------------
-function alignToNearestcard() {
-  const currentPosition = scrollingList.scrollLeft;
-  const nearestcard = Math.round(currentPosition / currentWidth) * cardWidth;
-  scrollingList.scrollLeft = nearestcard;
-}
-
 // Espansione cards -------------------------------------------------------------------
 function toggleDetails(button) {
   const card = button.closest(".card");

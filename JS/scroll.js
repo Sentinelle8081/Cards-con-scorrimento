@@ -14,3 +14,10 @@ export function startScroll() {
 export function stopScroll() {
   clearInterval(intervalId);
 }
+
+// Allinea alla carta più vicina ------------------------------------------------------
+function alignToNearestcard() {
+  const currentPosition = scrollingList.scrollLeft;
+  const nearestcard = Math.round(currentPosition / cardWidth) * cardWidth;
+  scrollingList.scrollLeft = nearestcard;
+}
